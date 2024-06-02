@@ -1,3 +1,3 @@
 import { AppRootState } from "../../app/store";
 
-export const selectedDecks = (state: AppRootState) => state.decksReducer.decks
+export const selectDecks = (state: AppRootState) => state.decksReducer.decks

@@ -5,10 +5,11 @@ import s from './DecksList.module.css'
 import { useAppDispatch, useAppSelector } from '../../../app/store'
 import { setDecksAC } from '../decks-reducer'
 import { DeckItem } from './DeckItem/DeckItem'
+import { selectDecks } from '../decks-selectors'
 
 export const DecksList = () => {
   const dispatch = useAppDispatch()
-const decks = useAppSelector(state => state.decksReducer.decks)
+const decks = useAppSelector(selectDecks)
 
 useEffect(() => {
   decksApi.getDecks().then((res)=> dispatch(setDecksAC(res.data.items)))
