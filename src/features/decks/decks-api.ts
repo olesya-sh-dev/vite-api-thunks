@@ -7,36 +7,49 @@ export const instance = axios.create({
   },
 })
 type AuthorType = {
-	id: string;
-	name: string;
+  id: string
+  name: string
 }
 
 export type DeckType = {
-	isFavorite: boolean;
-	author: AuthorType;
-	id: string;
-	userId: string;
-	name: string;
-	isPrivate: boolean;
-	cover: string;
-	created: string;
-	updated: string;
-	cardsCount: number;
+  isFavorite: boolean
+  author: AuthorType
+  id: string
+  userId: string
+  name: string
+  isPrivate: boolean
+  cover: string
+  created: string
+  updated: string
+  cardsCount: number
 }
 
- type PaginationType = {
-	currentPage: number;
-	itemsPerPage: number;
-	totalPages: number;
-	totalItems: number;
+type PaginationType = {
+  currentPage: number
+  itemsPerPage: number
+  totalPages: number
+  totalItems: number
 }
 
-export type DeckResponceType= {
-	items: DeckType[];
-	pagination: PaginationType;
+export type DeckResponceType = {
+  items: DeckType[]
+  pagination: PaginationType
 }
+
+// export type AddDeckResponceType = {
+// 	id: string;
+// 	userId: string;
+// 	name: string;
+// 	isPrivate: boolean;
+// 	cover: string;
+// 	created: string;
+// 	updated: string;
+// 	cardsCount: number;
+// }
 export const decksApi = {
-  getDecks: () => instance.get<DeckResponceType>('/v2/decks'),
+  getDecks: () => instance.get<DeckResponceType>('/v1/decks'),
+  addDeck: (params: AddDeckParams) => instance.post('/v1/decks', params),
 }
-  
-
+export type AddDeckParams = {
+  name: string
+}
